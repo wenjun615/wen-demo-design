@@ -58,7 +58,6 @@ public class PrizeController {
             logger.error("奖品发放失败{}。req:{}", req.getuId(), reqJson, e);
             awardRes = new AwardRes("0001", e.getMessage());
         }
-
         return awardRes;
     }
 
