@@ -1,24 +1,31 @@
 package test;
 
 import com.alibaba.fastjson.JSON;
-import design.AwardReq;
-import design.AwardRes;
-import design.PrizeController;
+import com.wen.design.AwardReq;
+import com.wen.design.AwardRes;
+import com.wen.design.PrizeController;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 
+/**
+ * <p>
+ * 测试
+ * </p>
+ *
+ * @author wenjun
+ * @since 2022-08-15
+ */
 public class ApiTest {
 
-    private Logger logger = LoggerFactory.getLogger(ApiTest.class);
+    private final Logger logger = LoggerFactory.getLogger(ApiTest.class);
 
     @Test
     public void test_awardToUser() {
         PrizeController prizeController = new PrizeController();
         System.out.println("\r\n模拟发放优惠券测试\r\n");
-        // 模拟发放优惠券测试
         AwardReq req01 = new AwardReq();
         req01.setuId("10001");
         req01.setAwardType(1);
@@ -27,14 +34,13 @@ public class ApiTest {
         AwardRes awardRes01 = prizeController.awardToUser(req01);
         logger.info("请求参数：{}", JSON.toJSON(req01));
         logger.info("测试结果：{}", JSON.toJSON(awardRes01));
-        System.out.println("\r\n模拟方法实物商品\r\n");
-        // 模拟方法实物商品
+        System.out.println("\r\n模拟发放实物商品\r\n");
         AwardReq req02 = new AwardReq();
         req02.setuId("10001");
         req02.setAwardType(2);
         req02.setAwardNumber("9820198721311");
         req02.setBizId("1023000020112221113");
-        req02.setExtMap(new HashMap<String, String>() {{
+        req02.setExtMap(new HashMap<>() {{
             put("consigneeUserName", "谢飞机");
             put("consigneeUserPhone", "15200292123");
             put("consigneeUserAddress", "吉林省.长春市.双阳区.XX街道.檀溪苑小区.#18-2109");
